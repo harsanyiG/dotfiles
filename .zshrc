@@ -30,3 +30,4 @@ neofetch
 
 #alias
 alias dot='cd ~/dotfiles'
+alias v='nvim'
