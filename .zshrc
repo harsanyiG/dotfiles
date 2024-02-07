@@ -26,3 +26,7 @@ setopt PROMPT_SUBST
 export PROMPT='${COLOR_USR}%n ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF} $ '
 
 neofetch 
+
+
+#alias
+alias dot='cd ~/dotfiles'
