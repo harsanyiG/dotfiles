@@ -122,10 +122,8 @@ require('telescope').setup { defaults = {
 }
 pcall(require('telescope').load_extension, 'fzf')
 
-require('mason').setup()
-require('mason-lspconfig').setup()
+require('gdog.lsp')
 require('gdog.keymaps').setup()
 require('gdog.options')
-require('gdog.lsp')
 require('gdog.treesitter')
 require('gdog.cmp')

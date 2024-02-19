@@ -38,28 +38,4 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.open_float, { desc = 'Open float
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 end
 
--- LSP --
-Keymaps.lsp_on_attach = function(_, bufnr)
-	vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = bufnr, desc = '[R]e[n]ame' })
-	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = bufnr, desc = '[C]ode [A]ction' })
-	vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions,
-		{ buffer = bufnr, desc = '[G]oto [D]efinition' })
-	vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references,
-		{ buffer = bufnr, desc = '[G]oto [R]eferences' })
-	vim.keymap.set('n', 'gI', require('telescope.builtin').lsp_implementations,
-		{ buffer = bufnr, desc = '[G]oto [I]mplementation' })
-	vim.keymap.set('n', '<leader>D', require('telescope.builtin').lsp_type_definitions,
-		{ buffer = bufnr, desc = 'Type [D]efinition' })
-	vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols,
-		{ buffer = bufnr, desc = '[D]ocument [S]ymbols' })
-	vim.keymap.set('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols,
-		{ buffer = bufnr, desc = '[W]orkspace [S]ymbols' })
-	vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
-	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
-	-- Add format command :Format
-	vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-		vim.lsp.buf.format()
-	end, { desc = 'Format current buffer with LSP' })
-end
-
 return Keymaps
