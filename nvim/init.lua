@@ -32,6 +32,7 @@ require("lazy").setup({
 	},
 
 	-- Colorscheme and plugins
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	-- Lua line
 	{
 		-- Set lualine as statusline
@@ -82,11 +83,17 @@ require("lazy").setup({
 	}
 
 })
+require("catppuccin").setup({
+ transparent_background = true
+})
+vim.cmd.colorscheme "catppuccin"
 
 require('lualine').setup({
     options = {
         section_separators = '', component_separators = '|',
 	icons_enabled = true,
+        theme = "catppuccin"
+
     },
     sections = {
         -- left

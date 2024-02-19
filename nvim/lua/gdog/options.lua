@@ -1,7 +1,9 @@
 -- line wrap
 vim.wo.wrap = false
+
 -- line numbers
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -29,7 +31,7 @@ vim.o.timeoutlen = 300
 -- Better completition
 vim.o.completeopt = 'menuone,noselect'
 
-vim.o.termguicolors = false
+--vim.o.termguicolors = false
 
 
 -- NETRW stuff
