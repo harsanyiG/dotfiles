@@ -454,6 +454,22 @@ require('lazy').setup({
     end,
   },
 
+  -- ts tool
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {
+      settings = {
+        tsserver_plugins = {
+          -- for TypeScript v4.9+
+          "@styled/typescript-styled-plugin",
+          -- or for older TypeScript versions
+          -- "typescript-styled-plugin",
+        },
+      },
+    },
+  },
+
   {
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     "catppuccin/nvim", 
