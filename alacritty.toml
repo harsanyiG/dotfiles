@@ -54,7 +54,7 @@ multiplier = 3
 
 [window]
 decorations = "buttonless"
-opacity = 0.8
+opacity = 0.9
 
 [window.padding]
 x = 10
