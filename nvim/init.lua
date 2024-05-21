@@ -52,6 +52,9 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- OIL keymap
+vim.keymap.set("n", "<space>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 -- [[ Basic Autocommands ]]
 
 -- Highlight when yanking (copying) text
@@ -80,6 +83,22 @@ require("lazy").setup({
 
 	-- "gc" to comment visual regions/lines
 	{ "numToStr/Comment.nvim", opts = {} },
+
+	-- OIL file explorer
+	{
+		"stevearc/oil.nvim",
+		opts = {
+			default_file_explorer = false,
+			columns = {
+				-- "icon",
+				-- "permissions",
+				-- "size",
+				-- "mtime",
+			},
+		},
+		-- Optional dependencies
+		-- dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 
 	{
 		"lewis6991/gitsigns.nvim",
