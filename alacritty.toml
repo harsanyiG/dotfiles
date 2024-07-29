@@ -28,6 +28,8 @@ foreground = "0xb4b4b9"
 
 [font]
 size = 14
+offset.y = 5
+offset.x = 1
 
 [font.bold]
 family = "Anonymous Pro"
@@ -54,7 +56,7 @@ multiplier = 3
 
 [window]
 decorations = "buttonless"
-opacity = 0.9
+opacity = 1
 
 [window.padding]
 x = 10
