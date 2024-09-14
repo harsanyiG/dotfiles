@@ -27,7 +27,7 @@ background = "0x020221"
 foreground = "0xb4b4b9"
 
 [font]
-size = 14
+size = 16
 
 [font.bold]
 family = "Anonymous Pro"
