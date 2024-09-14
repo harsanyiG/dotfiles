@@ -25,9 +25,6 @@ COLOR_GIT=$'%F{39}'
 setopt PROMPT_SUBST
 export PROMPT='${COLOR_USR}%n ${COLOR_DIR}%~ ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF} $ '
 
-neofetch 
-
-
 #alias
 alias dot='cd ~/dotfiles'
 alias v='nvim'
@@ -35,10 +32,6 @@ alias v='nvim'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
 
 # pnpm
 export PNPM_HOME="/Users/harsanyigabor/Library/pnpm"
