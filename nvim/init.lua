@@ -53,9 +53,6 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
--- OIL keymap
-vim.keymap.set("n", "<space>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-
 -- [[ Basic Autocommands ]]
 
 -- Highlight when yanking (copying) text
@@ -88,20 +85,20 @@ require("lazy").setup({
 	-- OIL file explorer
 	{
 		"stevearc/oil.nvim",
-		opts = {
-			view_options = {
-				show_hidden = true,
-			},
-			default_file_explorer = false,
-			columns = {
-				-- "icon",
-				-- "permissions",
-				-- "size",
-				-- "mtime",
-			},
-		},
-		-- Optional dependencies
-		-- dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("oil").setup({
+				view_options = {
+					show_hidden = true,
+				},
+				default_file_explorer = false,
+				columns = {},
+			})
+			-- Open parent directory in current window
+			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+			-- Open parent directory in floating window
+			vim.keymap.set("n", "<space>-", require("oil").toggle_float, { desc = "Open float OIL directory" })
+		end,
 	},
 
 	{
