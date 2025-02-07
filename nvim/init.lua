@@ -364,6 +364,7 @@ require("lazy").setup({
 		},
 		opts = {
 			notify_on_error = false,
+			stop_after_first = true,
 			format_on_save = function(bufnr)
 				local disable_filetypes = { c = true, cpp = true }
 				return {
@@ -376,7 +377,7 @@ require("lazy").setup({
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
 				-- javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
+				typescript = { "prettierd", "prettier" },
 			},
 		},
 	},
