@@ -27,24 +27,24 @@ background = "0x020221"
 foreground = "0xb4b4b9"
 
 [font]
-size = 16
+size = 14
 offset.y = 5
 offset.x = 1
 
 [font.bold]
-family = "Anonymous Pro"
+family = "FiraCode Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "Anonymous Pro"
+family = "FiraCode Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "Anonymous Pro"
+family = "FiraCode Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "Anonymous Pro"
+family = "FiraCode Nerd Font"
 style = "Regular"
 
 [mouse]
@@ -56,7 +56,7 @@ multiplier = 3
 
 [window]
 decorations = "buttonless"
-opacity = 0.8
+opacity = 0.9
 option_as_alt = "Both"
 
 [window.padding]

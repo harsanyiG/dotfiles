@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -90,8 +90,10 @@ require("lazy").setup({
 				view_options = {
 					show_hidden = true,
 				},
-				default_file_explorer = false,
-				columns = {},
+				default_file_explorer = true,
+				columns = {
+					"icon",
+				},
 			})
 			-- Open parent directory in current window
 			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
@@ -99,6 +101,7 @@ require("lazy").setup({
 			-- Open parent directory in floating window
 			vim.keymap.set("n", "<space>-", require("oil").toggle_float, { desc = "Open float OIL directory" })
 		end,
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
 	},
 
 	{
