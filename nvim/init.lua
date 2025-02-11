@@ -61,11 +61,13 @@ require("lazy").setup({
 	},
 	install = {
 		missing = true,
-		colorscheme = { "habamax" },
+		colorscheme = { "minischeme" },
 	},
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })
+
+vim.cmd("colorscheme minischeme")
 
 --- LSP CONFIG ---
 require("mason").setup()
@@ -101,12 +103,18 @@ require("conform").setup({
 vim.keymap.set("n", "<leader>f", function()
 	require("conform").format({ async = true, lsp_fallback = true })
 end)
+
 --- MINI ---
 
 require("mini.comment").setup() --gcc
+
 require("mini.completion").setup({
 	window = {
 		info = { height = 25, width = 80, border = "rounded" },
 		signature = { height = 25, width = 80, border = "rounded" },
 	},
 }) -- ctrl + space  / ctrl + n / ctrl + p / ctrl + e
+
+require("mini.move").setup() -- alt + hjkl
+
+require("mini.pairs").setup()
