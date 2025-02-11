@@ -102,3 +102,11 @@ vim.keymap.set("n", "<leader>f", function()
 	require("conform").format({ async = true, lsp_fallback = true })
 end)
 --- MINI ---
+
+require("mini.comment").setup() --gcc
+require("mini.completion").setup({
+	window = {
+		info = { height = 25, width = 80, border = "rounded" },
+		signature = { height = 25, width = 80, border = "rounded" },
+	},
+}) -- ctrl + space  / ctrl + n / ctrl + p / ctrl + e
