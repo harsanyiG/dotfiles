@@ -118,3 +118,19 @@ require("mini.completion").setup({
 require("mini.move").setup() -- alt + hjkl
 
 require("mini.pairs").setup()
+
+require("mini.surround").setup()
+-- Add surrounding with sa (in visual mode or on motion).
+-- Delete surrounding with sd.
+-- Replace surrounding with sr.
+-- Find surrounding with sf or sF (move cursor right or left).
+-- Highlight surrounding with sh.
+-- Change number of neighbor lines with sn (see :h MiniSurround-algorithm).
+
+require("mini.diff").setup({ view = { style = "sign" } })
+
+vim.keymap.set("n", "<leader>d", function()
+	require("mini.diff").toggle_overlay()
+end)
+
+-- visual mode gH reset hunk
