@@ -117,6 +117,8 @@ require("mini.completion").setup({
 
 require("mini.move").setup() -- alt + hjkl
 
+require("mini.icons").setup()
+
 require("mini.pairs").setup()
 
 require("mini.surround").setup()
@@ -134,3 +136,14 @@ vim.keymap.set("n", "<leader>d", function()
 end)
 
 -- visual mode gH reset hunk
+
+require("mini.extra").setup()
+require("mini.pick").setup()
+
+-- <Left> / <Right> moves prompt caret left / right.
+-- <S-Tab> toggles information window with all available mappings.
+-- <Tab> toggles preview.
+-- <C-x> / <C-a> toggles current / all item(s) as (un)marked.
+-- <C-Space> / <M-Space> makes all matches or marked items as new picker.
+-- <CR> / <M-CR> chooses current/marked item(s).
+-- <Esc> / <C-c> stops picker.
