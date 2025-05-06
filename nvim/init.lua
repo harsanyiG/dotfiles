@@ -56,8 +56,21 @@ require("lazy").setup({
 		"neovim/nvim-lspconfig",
 		--- FORMATTER ---
 		"stevearc/conform.nvim",
+		--- AUTO TAG ---
+		"windwp/nvim-ts-autotag",
 		--- MINI ---
 		{ "echasnovski/mini.nvim", version = "*" },
+		--- TELESCOPE ---
+		{
+			"nvim-telescope/telescope.nvim",
+			tag = "0.1.8",
+			-- or                              , branch = '0.1.x',
+			dependencies = { "nvim-lua/plenary.nvim" },
+		},
+		{
+			"nvim-treesitter/nvim-treesitter",
+			build = ":TSUpdate",
+		},
 	},
 	install = {
 		missing = true,
@@ -71,7 +84,7 @@ vim.cmd("colorscheme minischeme")
 
 --- LSP CONFIG ---
 require("mason").setup()
-require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "ts_ls" } })
+require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "ts_ls", "tailwindcss", "eslint", "cssls" } })
 
 --- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 local lspconfig = require("lspconfig")
@@ -79,14 +92,16 @@ local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({
 	settings = {
 		Lua = {
-			diagnostics = { globals = { "vim" } },
+			diagnostics = { globals = { "vim", "lang" } },
 			format = { enable = true },
 		},
 	},
 })
 
 lspconfig.ts_ls.setup({})
-
+lspconfig.tailwindcss.setup({})
+lspconfig.eslint.setup({})
+lspconfig.cssls.setup({})
 --- FORMATTER ---
 
 require("conform").setup({
@@ -104,6 +119,15 @@ vim.keymap.set("n", "<leader>f", function()
 	require("conform").format({ async = true, lsp_fallback = true })
 end)
 
+--- AUTO TAG ---
+require("nvim-ts-autotag").setup({
+	opts = {
+		-- Defaults
+		enable_close = true, -- Auto close tags
+		enable_rename = true, -- Auto rename pairs of tags
+		enable_close_on_slash = false, -- Auto close on trailing </
+	},
+})
 --- MINI ---
 
 require("mini.comment").setup() --gcc
@@ -137,13 +161,47 @@ end)
 
 -- visual mode gH reset hunk
 
-require("mini.extra").setup()
-require("mini.pick").setup()
+require("mini.statusline").setup()
 
--- <Left> / <Right> moves prompt caret left / right.
--- <S-Tab> toggles information window with all available mappings.
--- <Tab> toggles preview.
--- <C-x> / <C-a> toggles current / all item(s) as (un)marked.
--- <C-Space> / <M-Space> makes all matches or marked items as new picker.
--- <CR> / <M-CR> chooses current/marked item(s).
--- <Esc> / <C-c> stops picker.
+require("mini.tabline").setup()
+
+require("mini.notify").setup()
+--- TELESCOPE ---
+
+local telescope = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fg", telescope.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>fb", telescope.buffers, { desc = "Telescope buffers" })
+
+--- Treesitter ---
+
+require("nvim-treesitter.configs").setup({
+	ensure_installed = {
+		"c",
+		"lua",
+		"vim",
+		"vimdoc",
+		"query",
+		"markdown",
+		"markdown_inline",
+		"html",
+		"javascript",
+		"json",
+		"typescript",
+		"css",
+		"tsx",
+	},
+	auto_install = true,
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = false,
+	},
+	indent = { enable = true },
+	disable = function(lang, buf)
+		local max_filesize = 100 * 1024 -- 100 KB
+		local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+		if ok and stats and stats.size > max_filesize then
+			return true
+		end
+	end,
+})
