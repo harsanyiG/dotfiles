@@ -16,6 +16,10 @@ config.window_background_image = constants.bg_image
 config.window_background_opacity = 0.9
 config.macos_window_background_blur = 10
 
+config.inactive_pane_hsb = {
+	saturation = 0.5,
+	brightness = 0.2,
+}
 -- Misc
 config.max_fps = 120
 config.prefer_egl = true
