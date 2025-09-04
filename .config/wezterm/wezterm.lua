@@ -49,6 +49,11 @@ config.keys = {
 		mods = "LEADER",
 		action = wezterm.action.ActivateCopyMode,
 	},
+	{
+		key = "t",
+		mods = "LEADER",
+		action = wezterm.action.SpawnTab("DefaultDomain"),
+	},
 	{ key = "a", mods = "LEADER", action = wezterm.action.ActivatePaneByIndex(0) },
 	{ key = "b", mods = "LEADER", action = wezterm.action.ActivatePaneByIndex(1) },
 	{ key = "c", mods = "LEADER", action = wezterm.action.ActivatePaneByIndex(2) },
@@ -63,6 +68,11 @@ config.keys = {
 		key = "X",
 		mods = "LEADER",
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
+	},
+	{
+		key = "f",
+		mods = "LEADER",
+		action = wezterm.action.ToggleFullScreen,
 	},
 }
 
